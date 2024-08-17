@@ -15,8 +15,10 @@ sudo mv micro /usr/bin
 ```
 
 # Earlyroom (oom killer)
+```
 sudo apt install earlyroom
 systemctl enable --now earlyoom 
+```
 
 ## zsh + omzsh + p10k
 ```
