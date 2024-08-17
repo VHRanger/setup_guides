@@ -1,11 +1,12 @@
 ## Create User with Privileges
+```
 apt update -y
 apt install sudo nano adduser -y
 adduser matt
 nano /etc/sudoers
-
+```
 # Add the following line to the file
-# matt ALL=(ALL:ALL) ALL
+`matt ALL=(ALL:ALL) ALL`
 
 ## micro
 ```
