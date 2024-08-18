@@ -71,6 +71,7 @@ sudo apt install zoxide -y
 sudo apt install eza -y
 sudo apt install poppler -y
 sudo apt install htop -y
+sudo apt install libtinfo-dev -y
 ```
 
 # Helix
