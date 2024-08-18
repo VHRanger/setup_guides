@@ -82,6 +82,7 @@ sudo ln -s /usr/lib/aarch64-linux-gnu/libtic.so.6.4 /usr/lib/aarch64-linux-gnu/l
 
 # Helix
 ```
+sudo apt-get install software-properties-common -y
 sudo add-apt-repository ppa:maveonair/helix-editor
 sudo apt update
 sudo apt install helix
