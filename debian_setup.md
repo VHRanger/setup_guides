@@ -71,7 +71,13 @@ sudo apt install zoxide -y
 sudo apt install eza -y
 sudo apt install poppler -y
 sudo apt install htop -y
+```
+
+# Fix Conda breaking clear cmd
+
+```
 sudo apt install libtinfo-dev -y
+sudo ln -s /usr/lib/aarch64-linux-gnu/libtic.so.6.4 /usr/lib/aarch64-linux-gnu/libtinfow.so.6
 ```
 
 # Helix
