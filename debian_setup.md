@@ -126,6 +126,7 @@ brew install marksman
 html
 ```
 npm install --global vscode-html-languageserver-bin
+npm install -g typescript typescript-language-server
 pip install python-lsp-server[all]
 ```
 
