@@ -207,7 +207,7 @@ they're all here: https://github.com/helix-editor/helix/wiki/Language-Server-Con
 
 markdown:
 https://github.com/artempyanykh/marksman/blob/main/docs/install.md
-brew install marksman
+download binary and move to /usr/bin
 
 html
 ```
