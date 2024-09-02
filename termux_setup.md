@@ -55,6 +55,7 @@ pkg install nodejs -y
 pkg install micro -y
 apt install lazygit -y
 pkg install helix-editor -y
+pkg install helix-grammars -y
 pkg install ffmpeg -y
 pkg install git -y
 pkg install openssh -y
