@@ -175,7 +175,11 @@ theme = "github_light_high_contrast"
 [editor]
 cursorline = true
 color-modes = true
-true-color = true
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 25 
+max-indent-retain = 2
 
 [editor.cursor-shape]
 insert = "bar"
