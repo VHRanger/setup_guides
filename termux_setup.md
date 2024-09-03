@@ -3,8 +3,9 @@
 - lots of building and linking stuff (python wheels, some npm packages)
 - Depending on manufacturer, android might kill your termux process. Use dontkillmyapp guides or root to stop this.
 
+# try this one:
 
-
+https://github.com/cheadrian/termux-chroot-proot-wine-box86_64
 
 Setup Guide Here: https://medium.com/samsung-internet-dev/writing-software-using-a-phone-e71976f1f18d
 ----
@@ -12,6 +13,9 @@ Setup Guide Here: https://medium.com/samsung-internet-dev/writing-software-using
 
 `termux-setup-storage`
  touch .hushlogin
+
+termux-change-repo
+
 
 # Nerd Fonts
 Can be installed with the termux styling side app. Then just choose a nerd font like fira mono 
@@ -36,6 +40,8 @@ Then set in `~/.zshrc`:
 ```
 ZSH_THEME="powerlevel10k/powerlevel10k"
 ```
+
+also while youre in there make sure to uncomment the omzsh line to add `$HOME.local/bin/` to the path
 
 # editors
 ndk-multilib (compiling stuff)
