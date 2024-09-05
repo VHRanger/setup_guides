@@ -159,6 +159,8 @@ function yy() {
 }
 ```
 
+alias zz="zellij"
+
 ### Yazi  config
 Remember to install a nerd font!!!
 micro ~/.config/yazi/yazi.toml
