@@ -2,11 +2,11 @@
 ```
 apt update -y
 apt install sudo nano adduser -y
-adduser matt
+adduser droidmaster
 nano /etc/sudoers
 ```
 # Add the following line to the file
-`matt ALL=(ALL:ALL) ALL`
+`droidmaster ALL=(ALL:ALL) ALL`
 
 ## micro
 ```
