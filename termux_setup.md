@@ -56,6 +56,7 @@ pkg install ninja -y
 
 pkg install rust -y
 pkg install python -y
+pkg install uv -y
 pkg install nodejs -y
 
 pkg install micro -y

@@ -39,11 +39,21 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 apt install nodejs npm
 ```
 ### mamba python
+use this guide for miniforge:
+https://ivonblog.com/en-us/posts/android-termux-anaconda/
+
+dont use this ine anymore:
 ```
 curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
 bash Miniforge3-$(uname)-$(uname -m).sh
 ~/miniconda3/bin/conda init zsh
 ```
+
+uv sucks less
+```
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
 ### Rust
 ```
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
