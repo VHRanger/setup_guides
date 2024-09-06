@@ -1,5 +1,5 @@
-install miniforge
-https://ivonblog.com/en-us/posts/android-termux-anaconda/
+# NOTE: This was written assuming proot debian in android (aarch64)
+Should work for other Aarch64 Debian as well.
 
 ## zsh + omzsh + p10k
 ```
@@ -14,40 +14,56 @@ Then set in `~/.zshrc`:
 ZSH_THEME="powerlevel10k/powerlevel10k"
 ```
 
+Now restart the shell and go through the P10k configuration.
+
+# Python/miniforge3
+
+```
+apt update
+apt install wget python3 python3-pip vim -y
+```
+Proot Debian on android links to the termux python by default. This breaks miniforge when installing it.
+Add this to the `.zshrc` to fix it:
+```
+alias python="/usr/bin/python3"
+alias python3="/usr/bin/python3"
+alias pip="/usr/bin/pip"
+alias pip3="/usr/bin/pip"
+```
+Also make sure to add back `/.local/bin` to the PATH in `.zshrc`. Now run this and complete it:
+
+```
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-aarch64.sh
+bash Miniforge3-Linux-aarch64.sh
+```
+
 # Stuff to build other stuff
-### NPM
+
+NOTE: Find ways to add back: `eza, popper`
+
+### Apt based tilities I like
 ```
-apt install nodejs npm
+apt install tmux ffmpeg git openssh-client samba exiftool chafa fzf ripgrep bat zoxide htop nodejs npm -y
 ```
 
-### Rust
-```
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-rustup update
-```
+### Weird utilities because of Apt
 
-MISSING FD, glow, eza, popper, IN HERE
-
-### Utilities I like
+[FD from here](https://github.com/sharkdp/fd?tab=readme-ov-file#installation)
 ```
-apt install tmux ffmpeg git openssh-client samba exiftool chafa fzf ripgrep bat zoxide htop -y
+apt install fd-find -y
+ln -s $(which fdfind) ~/.local/bin/fd
 ```
-
-# Helix
-Download the prevuolt binaries from GitHub. move them to usr/bin 
-
-## Rust Packages
+[Glow from here](https://github.com/charmbracelet/glow)
 ```
-cargo install --locked yazi-fm yazi-cli
-cargo install --locked zellij
-cargo install serpl
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
+echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
+sudo apt update && sudo apt install glow
 ```
-
-### Python based packages
-Python LSP for Helix
-NBTerm sucks but no other alt
+### Python based Utilities
+Install them to the base env because they're useful.
 yt-dlp to download youtube vids
-glances is htop improvement
+glances is an htop improvement
 tldr is for quick command lookups
 ```
 pip install yt-dlp
@@ -55,25 +71,60 @@ pip install --user glances
 pip install tldr
 ```
 
+# Rust
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup update
+```
+
+## Helix
+Download the prebuilt binary from GitHub.
+From (July 2024):
+```
+wget https://github.com/helix-editor/helix/releases/download/24.07/helix-24.07-aarch64-linux.tar.xz
+tar -xf helix-24.07-aarch64-linux.tar.xz
+```
+Move that to usr/bin.
 ### Adding LSP to helix
-they're all here: https://github.com/helix-editor/helix/wiki/Language-Server-Configurations 
-markdown:
-https://github.com/artempyanykh/marksman/blob/main/docs/install.md
-brew install marksman
-html
+[LSP list are all here](https://github.com/helix-editor/helix/wiki/Language-Server-Configurations)
 ```
 npm install --global vscode-html-languageserver-bin
 npm install -g typescript typescript-language-server
-pip install python-lsp-server[all]
+pip install python-lsp-server
+```
+[For markdown:](https://github.com/artempyanykh/marksman/blob/main/docs/install.md)
+(Place the binary somewhere in your PATH)
+```
+wget https://github.com/artempyanykh/marksman/releases/download/2023-12-09/marksman-linux-arm64
+mv marksman-linux-arm64 marksman && chmod +x marksman
+mv marksman $HOME/.local/bin/
 ```
 
+## Rust Packages
+```
+cargo install --locked yazi-fm yazi-cli
+cargo install --locked zellij
+cargo install eza
+```
+[Yazi from Here](https://yazi-rs.github.io/docs/installation#official-binaries)
+Remember to install a nerd font for Yazi. It should have come from P10k already
+```
+cargo install --locked yazi-fm yazi-cli
+```
 
-
-## yy command yazi
-cd $ZSH_CUSTOM
-Export config options to `.zshrc` file:
+# Stuff to add to the `.zshrc`
+also make sure `/.local/bin` is in the path!!
 ```
 export EDITOR="hx"
+
+alias ls="eza"
+alias python="/usr/bin/python3"
+alias python3="/usr/bin/python3"
+alias pip="/usr/bin/pip"
+alias pip3="/usr/bin/pip"
+
+# zz alias for zellij
+alias zz="zellij"
 
 # make `yy` alias for yazi
 function yy() {
@@ -85,17 +136,15 @@ function yy() {
 	rm -f -- "$tmp"
 }
 ```
-# Aliases in zshrc
-alias zz="zellij"
-alias ls="eza"
-add the python aliases from ivonblog
-also add back use bin to path in zshrc
+
+### Add Eza completions to zsh:
+[Follow it from here](https://github.com/eza-community/eza/blob/main/INSTALL.md#completions)
+
 
 
 ### Yazi  config
-Remember to install a nerd font!!!
-micro ~/.config/yazi/yazi.toml
 ```
+echo `
 [manager]
 ratio          = [ 0, 4, 4]
 sort_by        = "modified"
@@ -112,16 +161,6 @@ sixel_fraction  = 15
 ueberzug_scale  = 1
 ueberzug_offset = [ 0, 0, 0, 0 ]
 
-[opener]
-open_json = [
-	{run = 'fx "$@"', block=true}
-]
-
-[open]
-rules = [
-	{ name = "*.json", use=['open_json', 'edit', 'reveal']},
-]
-
 [tasks]
 micro_workers    = 3
 macro_workers    = 10
@@ -129,31 +168,11 @@ bizarre_retry    = 2
 image_alloc      = 67108864  # 64MB
 image_bound      = [ 0, 0 ]
 suppress_preload = false
+' > ~/.config/yazi/yazi.toml
 ```
 
-# Tmux config (ugh)
-add zsh to tmux defaults
-Add yazi image preview to it too:
-https://yazi-rs.github.io/docs/image-preview#tmux
-
-```
-set -g escape-time 10
-set -g mouse on 
-set -g mouse-select-pane on
-set -g allow-passthrough on
-set -ga update-environment TERM
-set -ga update-environment TERM_PROGRAM
-```
-new panes in same path:
-`micro ~/.tmux.conf`
-```
-set -g mouse on
-bind  c  new-window      -c "#{pane_current_path}"
-bind  %  split-window -h -c "#{pane_current_path}"
-bind '"' split-window -v -c "#{pane_current_path}"
-```
-
-# (if rooted) Earlyroom (oom killer)
+# If rooted
+### Earlyroom (oom killer)
 ```
 sudo apt install earlyroom
 systemctl enable --now earlyoom 
