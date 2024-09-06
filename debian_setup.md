@@ -14,7 +14,7 @@ Then set in `~/.zshrc`:
 ZSH_THEME="powerlevel10k/powerlevel10k"
 ```
 
-Now restart the shell and go through the P10k configuration.
+Now **restart the shell** and go through the P10k configuration.
 
 # Python/miniforge3
 
