@@ -1,24 +1,5 @@
-## Create User with Privileges
-```
-apt update -y
-apt install sudo nano adduser -y
-adduser droidmaster
-nano /etc/sudoers
-```
-# Add the following line to the file
-`droidmaster ALL=(ALL:ALL) ALL`
-
-## micro
-```
-curl https://getmic.ro | bash
-sudo mv micro /usr/bin
-```
-
-# Earlyroom (oom killer)
-```
-sudo apt install earlyroom
-systemctl enable --now earlyoom 
-```
+install miniforge
+https://ivonblog.com/en-us/posts/android-termux-anaconda/
 
 ## zsh + omzsh + p10k
 ```
@@ -38,21 +19,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 ```
 apt install nodejs npm
 ```
-### mamba python
-use this guide for miniforge:
-https://ivonblog.com/en-us/posts/android-termux-anaconda/
-
-dont use this ine anymore:
-```
-curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
-bash Miniforge3-$(uname)-$(uname -m).sh
-~/miniconda3/bin/conda init zsh
-```
-
-uv sucks less
-```
-curl -LsSf https://astral.sh/uv/install.sh | sh
-```
 
 ### Rust
 ```
@@ -60,38 +26,15 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup update
 ```
 
+MISSING FD, glow, eza, popper, IN HERE
+
 ### Utilities I like
 ```
-sudo apt install tmux -y
-sudo apt install btop -y
-sudo apt install ffmpeg -y
-sudo apt install git -y
-sudo apt install openssh -y
-sudo apt install samba -y
-sudo apt install exiftool -y
-sudo apt install chafa -y
-sudo apt install lazygit -y
-sudo apt install yazi -y
-sudo apt install fzf -y
-sudo apt install fd  -y
-sudo apt install glow -y
-sudo apt install ripgrep -y
-sudo apt install bat -y
-sudo apt install zoxide -y
-sudo apt install eza -y
-sudo apt install poppler -y
-sudo apt install htop -y
-```
-
-# Fix Conda breaking clear cmd
-
-```
-sudo apt install libtinfo-dev -y
-sudo ln -s /usr/lib/aarch64-linux-gnu/libtic.so.6.4 /usr/lib/aarch64-linux-gnu/libtinfow.so.6
+apt install tmux ffmpeg git openssh-client samba exiftool chafa fzf ripgrep bat zoxide htop -y
 ```
 
 # Helix
-just download the prevuolt binaries from GitHub 
+Download the prevuolt binaries from GitHub. move them to usr/bin 
 
 ## Rust Packages
 ```
@@ -110,22 +53,6 @@ tldr is for quick command lookups
 pip install yt-dlp
 pip install --user glances
 pip install tldr
-```
-
-### Helix Languages Config
-`micro ~/.config/helix/languages.toml`
-```
-[[language]]
-name = "python"
-scope = "source.python"
-injection-regex = "py(thon)?"
-file-types = ["py", "pyi", "py3", "pyw", "ptl", "rpy", "cpy", "ipy", "pyt", { glob = ".python_history" }, { glob = ".pythonstartup" }, { glob = ".pythonrc" }, { glob = "SConstruct" }, { glob = "SConscript" }]
-shebangs = ["python"]
-roots = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json", ".git"]
-comment-token = "#"
-language-servers = [ "pylsp" ]
-# TODO: pyls needs utf-8 offsets
-indent = { tab-width = 4, unit = "    " }
 ```
 
 ### Adding LSP to helix
@@ -158,8 +85,12 @@ function yy() {
 	rm -f -- "$tmp"
 }
 ```
-
+# Aliases in zshrc
 alias zz="zellij"
+alias ls="eza"
+add the python aliases from ivonblog
+also add back use bin to path in zshrc
+
 
 ### Yazi  config
 Remember to install a nerd font!!!
@@ -221,3 +152,10 @@ bind  c  new-window      -c "#{pane_current_path}"
 bind  %  split-window -h -c "#{pane_current_path}"
 bind '"' split-window -v -c "#{pane_current_path}"
 ```
+
+# (if rooted) Earlyroom (oom killer)
+```
+sudo apt install earlyroom
+systemctl enable --now earlyoom 
+```
+
