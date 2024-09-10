@@ -51,6 +51,7 @@ apt install tmux ffmpeg git openssh-client samba exiftool chafa fzf ripgrep bat 
 [FD from here](https://github.com/sharkdp/fd?tab=readme-ov-file#installation)
 ```
 apt install fd-find -y
+mkdir -p ~/.local/bin/
 ln -s $(which fdfind) ~/.local/bin/fd
 ```
 [Glow from here](https://github.com/charmbracelet/glow)
