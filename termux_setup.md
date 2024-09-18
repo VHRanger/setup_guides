@@ -8,7 +8,7 @@
 Add fix for libtinfow broken in conda
 add euporie notebooks install
 add euporie as default opener in yazi
-
+remove the python aliases after mamba install!!
 
 # try this one:
 
