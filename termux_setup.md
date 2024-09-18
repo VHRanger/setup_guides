@@ -10,6 +10,8 @@ add euporie notebooks install
 add euporie as default opener in yazi
 remove the python aliases after mamba install!!
 
+pkg install python-pyarrow
+
 need maturin for a bunch of libs:
 https://old.reddit.com/r/termux/comments/19c8rpg/how_to_install_maturin_and_wheel/
 pkg install -y rust binutils
