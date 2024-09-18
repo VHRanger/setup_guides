@@ -10,10 +10,15 @@ add euporie notebooks install
 add euporie as default opener in yazi
 remove the python aliases after mamba install!!
 
+need maturin for a bunch of libs:
+https://old.reddit.com/r/termux/comments/19c8rpg/how_to_install_maturin_and_wheel/
+pkg install -y rust binutils
+
+CARGO_BUILD_TARGET="$(rustc -Vv | grep "host" | awk '{print $2}')" pip install maturin
+
 this one for euporie in termux:
 https://old.reddit.com/r/termux/comments/149b9xx/jupyter_notebook_in_termux/
 apt install libzmq
-
 LDFLAGS=" -lm -lcompiler_rt" pip3 install jupyter
 
 
