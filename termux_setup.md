@@ -10,6 +10,13 @@ add euporie notebooks install
 add euporie as default opener in yazi
 remove the python aliases after mamba install!!
 
+this one for euporie in termux:
+https://old.reddit.com/r/termux/comments/149b9xx/jupyter_notebook_in_termux/
+apt install libzmq
+
+LDFLAGS=" -lm -lcompiler_rt" pip3 install jupyter
+
+
 # try this one:
 
 https://github.com/cheadrian/termux-chroot-proot-wine-box86_64
