@@ -3,6 +3,13 @@
 - lots of building and linking stuff (python wheels, some npm packages)
 - Depending on manufacturer, android might kill your termux process. Use dontkillmyapp guides or root to stop this.
 
+
+## TODO:
+Add fix for libtinfow broken in conda
+add euporie notebooks install
+add euporie as default opener in yazi
+
+
 # try this one:
 
 https://github.com/cheadrian/termux-chroot-proot-wine-box86_64
