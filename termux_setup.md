@@ -5,12 +5,13 @@
 
 
 ## TODO:
-Add fix for libtinfow broken in conda
 add euporie notebooks install
 add euporie as default opener in yazi
-remove the python aliases after mamba install!!
+remove the python aliases after mamba install in debian!
 
 pkg install python-pyarrow
+pkg install python-numpy
+pkg install python-pandas
 
 need maturin for a bunch of libs:
 https://old.reddit.com/r/termux/comments/19c8rpg/how_to_install_maturin_and_wheel/
