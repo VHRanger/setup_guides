@@ -1,3 +1,13 @@
+
+
+# making jupyter notebooks run in android 13+
+https://josesho.notion.site/Installing-Analytics-Stack-in-Termux-4a6ff82d32974db4a4de27ee5e24ba45
+
+from here: 
+https://github.com/termux/proot/issues/248
+
+in general, it seems better to run it from alpine in proot because of all the glibc/bionic bugs
+
 # NOTE: This was written assuming proot debian in android (aarch64)
 Should work for other Aarch64 Debian as well.
 
