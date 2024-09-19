@@ -23,6 +23,14 @@ https://old.reddit.com/r/termux/comments/149b9xx/jupyter_notebook_in_termux/
 apt install libzmq
 LDFLAGS=" -lm -lcompiler_rt" pip3 install jupyter
 
+to install jupyter:
+https://old.reddit.com/r/termux/comments/15e6qz5/how_to_install_jupyter_notebook_in_termux/
+
+pkg install python libzmq libcrypt
+pkg install rust libzmq
+pkg install python make rust llvm binutils-is-llvm libandroid-execinfo -y
+
+
 
 # try this one:
 
