@@ -30,7 +30,10 @@ pkg install python libzmq libcrypt
 pkg install rust libzmq
 pkg install python make rust llvm binutils-is-llvm libandroid-execinfo -y
 
-or this one:
+# THIS ONE WORKS FOR JUPYTER NOTEBOOKS:
+## NOTE they still dont work in proot though
+
+
 pkg update -y
 pkg upgrade -y
 
