@@ -3,6 +3,60 @@
 - lots of building and linking stuff (python wheels, some npm packages)
 - Depending on manufacturer, android might kill your termux process. Use dontkillmyapp guides or root to stop this.
 
+
+## TODO:
+add euporie notebooks install
+add euporie as default opener in yazi
+remove the python aliases after mamba install in debian!
+
+pkg install python-pyarrow
+pkg install python-numpy
+pkg install python-pandas
+
+need maturin for a bunch of libs:
+https://old.reddit.com/r/termux/comments/19c8rpg/how_to_install_maturin_and_wheel/
+pkg install -y rust binutils
+
+CARGO_BUILD_TARGET="$(rustc -Vv | grep "host" | awk '{print $2}')" pip install maturin
+
+this one for euporie in termux:
+https://old.reddit.com/r/termux/comments/149b9xx/jupyter_notebook_in_termux/
+apt install libzmq
+LDFLAGS=" -lm -lcompiler_rt" pip3 install jupyter
+
+to install jupyter:
+https://old.reddit.com/r/termux/comments/15e6qz5/how_to_install_jupyter_notebook_in_termux/
+
+pkg install python libzmq libcrypt
+pkg install rust libzmq
+pkg install python make rust llvm binutils-is-llvm libandroid-execinfo -y
+
+# THIS ONE WORKS FOR JUPYTER NOTEBOOKS:
+## NOTE they still dont work in proot though
+
+
+pkg update -y
+pkg upgrade -y
+
+apt install -y git clang
+apt install -y python
+apt install -y libzmq
+apt install -y rust
+pkg install -y binutils
+pip install maturin
+apt install -y cmake
+pip install pyzmq
+
+_file="$(find $PREFIX/lib/python3.11 -name "_sysconfigdata*.py")"
+rm -rf $PREFIX/lib/python3.11/__pycache__
+cp "$_file" "$_file".backup
+sed -i 's|-fno-openmp-implicit-rpath||g' "$_file"
+
+pip install jupyter
+pkg install -y patchelf
+patchelf --add-needed libpython3.11.so /data/data/com.termux/files/usr/lib/python3.11/site-packages/zmq/backend/cython/_zmq.cpython-311.so
+pkg install -y matplotlib
+
 # try this one:
 
 https://github.com/cheadrian/termux-chroot-proot-wine-box86_64
