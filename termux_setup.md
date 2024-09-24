@@ -54,6 +54,8 @@ pkg install binutils -y
 pkg install ndk-multilib -y
 pkg install ninja -y
 
+pkg install dnsutils jq -y
+
 pkg install rust -y
 pkg install python -y
 pkg install uv -y
