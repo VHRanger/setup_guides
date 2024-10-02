@@ -11,7 +11,9 @@ Should work for other Aarch64 Debian as well.
 
 ## zsh + omzsh + p10k
 ```
-apt install zsh
+apk add zsh
+
+
 chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
