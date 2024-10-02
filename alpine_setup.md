@@ -1,3 +1,8 @@
+
+try this guy too:
+https://github.com/jirutka/alpine-zsh-config
+
+
 # making jupyter notebooks run in android 13+
 https://josesho.notion.site/Installing-Analytics-Stack-in-Termux-4a6ff82d32974db4a4de27ee5e24ba45
 
