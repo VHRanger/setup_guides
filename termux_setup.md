@@ -138,6 +138,9 @@ pkg install htop -y
 
 ```
 
+### SSH Note:
+The config file might be in `~/.ssh/.config` or in `/usr/etc/ssh/ssh_config`. Make sure with `ssh -vvv ADDR_TO_CONNECT` that you're using the right one
+
 # npm note:
 you can only run npm install inside the home dir. on the SD card, symlinks are broken
 
