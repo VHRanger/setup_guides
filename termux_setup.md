@@ -41,6 +41,45 @@ Now, exit and restart termux.
 pkg update -y && pkg upgrade -y && pkg install -y git clang llvm python libzmq && pkg install binutils -y && pkg install -y binutils-is-llvm && pkg install -y rust cmake libcrypt make rust libandroid-execinfo
 ```
 
+# editors
+ndk-multilib (compiling stuff)
+chafa (yazi image previews)
+poppler (yazi pdf previews)
+```
+pkg install imagemagick -y
+pkg install build-essential -y
+pkg install binutils -y 
+pkg install ndk-multilib -y
+pkg install ninja -y
+
+pkg install dnsutils jq -y
+
+pkg install rust -y
+pkg install python -y
+pkg install uv -y
+pkg install nodejs -y
+
+pkg install micro -y
+apt install lazygit -y
+pkg install helix-editor -y
+pkg install helix-grammars -y
+pkg install ffmpeg -y
+pkg install git -y
+pkg install openssh -y
+pkg install samba -y
+pkg install exiftool -y
+pkg install chafa -y
+pkg install yazi -y
+pkg install fzf -y
+pkg install fd  -y
+pkg install glow -y
+pkg install ripgrep -y
+pkg install bat -y
+pkg install zoxide -y
+pkg install eza -y
+pkg install poppler -y
+pkg install htop -y
+```
 
 ---
 # Python datascience environment
@@ -94,46 +133,7 @@ termux-change-repo
 
 
 
-# editors
-ndk-multilib (compiling stuff)
-chafa (yazi image previews)
-poppler (yazi pdf previews)
-```
-pkg install imagemagick -y
-pkg install build-essential -y
-pkg install binutils -y 
-pkg install ndk-multilib -y
-pkg install ninja -y
 
-pkg install dnsutils jq -y
-
-pkg install rust -y
-pkg install python -y
-pkg install uv -y
-pkg install nodejs -y
-
-pkg install micro -y
-apt install lazygit -y
-pkg install helix-editor -y
-pkg install helix-grammars -y
-pkg install ffmpeg -y
-pkg install git -y
-pkg install openssh -y
-pkg install samba -y
-pkg install exiftool -y
-pkg install chafa -y
-pkg install yazi -y
-pkg install fzf -y
-pkg install fd  -y
-pkg install glow -y
-pkg install ripgrep -y
-pkg install bat -y
-pkg install zoxide -y
-pkg install eza -y
-pkg install poppler -y
-pkg install htop -y
-
-```
 
 ### SSH Note:
 The config file might be in `~/.ssh/.config` or in `/usr/etc/ssh/ssh_config`. Make sure with `ssh -vvv ADDR_TO_CONNECT` that you're using the right one
