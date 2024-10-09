@@ -3,6 +3,19 @@
 # making jupyter notebooks run in android 13+
 https://josesho.notion.site/Installing-Analytics-Stack-in-Termux-4a6ff82d32974db4a4de27ee5e24ba45
 
+
+[to install jupyter in proot](https://old.reddit.com/r/termux/comments/15e6qz5/how_to_install_jupyter_notebook_in_termux)
+```
+_file="$(find $PREFIX/lib/python3.12 -name "_sysconfigdata*.py")"
+rm -rf $PREFIX/lib/python3.12/__pycache__
+cp "$_file" "$_file".backup
+sed -i 's|-fno-openmp-implicit-rpath||g' "$_file"
+
+pip install jupyter
+pkg install -y patchelf
+patchelf --add-needed libpython3.12.so /data/data/com.termux/files/usr/lib/python3.12/site-packages/zmq/backend/cython/_zmq.cpython-311.so
+```
+
 from here: 
 https://github.com/termux/proot/issues/248
 
