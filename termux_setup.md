@@ -93,10 +93,25 @@ CARGO_BUILD_TARGET="$(rustc -Vv | grep "host" | awk '{print $2}')"
 pip install maturin
 ```
 
-DS libraries are compiled for termux:
+Building python pip packages can be a pain. See the [tricks here](https://wiki.termux.com/wiki/Python)
+
+DS libraries that are precompiled for termux:
+
 ```
-pkg install -y python-pyarrow python-numpy python-pandas matplotlib
+pkg install -y python-pyarrow python-numpy matplotlib
 ```
+
+[Building pandas:](https://github.com/termux/termux-packages/discussions/19126)
+```
+yes | pkg upgrade
+pkg install python build-essential cmake ninja libopenblas libandroid-execinfo patchelf binutils-is-llvm
+pip3 install setuptools wheel packaging pyproject_metadata cython meson-python versioneer
+
+MATHLIB=m LDFLAGS="-lpython3.11" pip3 install --no-build-isolation --no-cache-dir numpy
+
+LDFLAGS="-lpython3.11" pip3 install --no-build-isolation --no-cache-dir pandas
+```
+
 
 [this one for euporie in termux](https://old.reddit.com/r/termux/comments/149b9xx/jupyter_notebook_in_termux)
 ```
@@ -116,30 +131,15 @@ pkg install -y patchelf
 patchelf --add-needed libpython3.11.so /data/data/com.termux/files/usr/lib/python3.11/site-packages/zmq/backend/cython/_zmq.cpython-311.so
 ```
 
-
-# try this one:
-
-----
-[First, setup storage access:](https://wiki.termux.com/wiki/Termux-setup-storage)
-```
-termux-setup-storage
-touch .hushlogin
-termux-change-repo
-```
-
-
-
-
-
-
+# Advanced Configurations
 
 ### SSH Note:
 The config file might be in `~/.ssh/.config` or in `/usr/etc/ssh/ssh_config`. Make sure with `ssh -vvv ADDR_TO_CONNECT` that you're using the right one
 
-# npm note:
-you can only run npm install inside the home dir. on the SD card, symlinks are broken
+### npm note:
+you can only run npm install inside the home dir. on the SD card the symlinks are broken.
 
-## Cache GH Passwords
+### Cache GH Passwords
 ```
  git config --global credential.helper 'cache --timeout=3600' 
 ```
