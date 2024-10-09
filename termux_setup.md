@@ -113,22 +113,11 @@ LDFLAGS="-lpython3.12" pip3 install --no-build-isolation --no-cache-dir pandas
 ```
 
 
-[this one for euporie in termux](https://old.reddit.com/r/termux/comments/149b9xx/jupyter_notebook_in_termux)
+[this one for jupyter and euporie in termux](https://old.reddit.com/r/termux/comments/149b9xx/jupyter_notebook_in_termux)
 ```
 pkg install -y libzmq
 LDFLAGS=" -lm -lcompiler_rt" pip3 install jupyter
-```
-
-[to install jupyter](https://old.reddit.com/r/termux/comments/15e6qz5/how_to_install_jupyter_notebook_in_termux)
-```
-_file="$(find $PREFIX/lib/python3.12 -name "_sysconfigdata*.py")"
-rm -rf $PREFIX/lib/python3.12/__pycache__
-cp "$_file" "$_file".backup
-sed -i 's|-fno-openmp-implicit-rpath||g' "$_file"
-
-pip install jupyter
-pkg install -y patchelf
-patchelf --add-needed libpython3.12.so /data/data/com.termux/files/usr/lib/python3.12/site-packages/zmq/backend/cython/_zmq.cpython-311.so
+pip install --user euporie
 ```
 
 # Advanced Configurations
@@ -228,6 +217,17 @@ pip install tldr
 cargo install --locked zellij
 cargo install serpl
 ```
+# NPM Packages
+```
+npm install --global vscode-html-languageserver-bin
+```
+### Adding LSP to helix
+
+they're all here: https://github.com/helix-editor/helix/wiki/Language-Server-Configurations 
+
+markdown:
+https://github.com/artempyanykh/marksman/blob/main/docs/install.md
+download binary and move to /usr/bin
 
 ### Helix Config
 ```
@@ -265,19 +265,6 @@ comment-token = "#"
 language-servers = [ "pylsp" ]
 # TODO: pyls needs utf-8 offsets
 indent = { tab-width = 4, unit = "    " }
-```
-
-### Adding LSP to helix
-
-they're all here: https://github.com/helix-editor/helix/wiki/Language-Server-Configurations 
-
-markdown:
-https://github.com/artempyanykh/marksman/blob/main/docs/install.md
-download binary and move to /usr/bin
-
-html
-```
-npm install --global vscode-html-languageserver-bin
 ```
 
 
