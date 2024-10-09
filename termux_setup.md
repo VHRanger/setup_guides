@@ -137,17 +137,17 @@ pip install tldr
 cargo install --locked zellij
 cargo install serpl
 ```
-# NPM Packages
-```
-npm install --global vscode-html-languageserver-bin
-```
 ### Adding LSP to helix
 
-they're all here: https://github.com/helix-editor/helix/wiki/Language-Server-Configurations 
+[they're all here](https://github.com/helix-editor/helix/wiki/Language-Server-Configurations)
 
 markdown:
 https://github.com/artempyanykh/marksman/blob/main/docs/install.md
 download binary and move to /usr/bin
+html:
+```
+npm install --global vscode-html-languageserver-bin
+```
 
 
 # More Configurations
