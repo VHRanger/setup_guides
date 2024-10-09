@@ -10,13 +10,23 @@ add euporie as default opener in yazi
 remove the python aliases after mamba install in debian!
 
 ---
-# Basic shell env
-
-### Nerd Fonts
-Can be installed with the termux styling side app. P10k will also install them.
+# Termux Setup
 
 ### Termux - allow external apps
 `value="true"; key="allow-external-apps"; file="/data/data/com.termux/files/home/.termux/termux.properties"; mkdir -p "$(dirname "$file")"; chmod 700 "$(dirname "$file")"; if ! grep -E '^'"$key"'=.*' $file &>/dev/null; then [[ -s "$file" && ! -z "$(tail -c 1 "$file")" ]] && newline=$'\n' || newline=""; echo "$newline$key=$value" >> "$file"; else sed -i'' -E 's/^'"$key"'=.*/'"$key=$value"'/' $file; fi`
+
+[Setup storage access:](https://wiki.termux.com/wiki/Termux-setup-storage)
+```
+termux-setup-storage
+touch .hushlogin
+termux-change-repo
+```
+
+---
+## Basic shell env
+
+Note that Nerd Fonts can be installed with the termux styling side app. P10k will also install them.
+
 
 # Zsh, OMZSH, P10K, etc.
 ```
@@ -38,21 +48,17 @@ Now, exit and restart termux.
 ------------
 # Basic Dev environment
 ```
-pkg update -y && pkg upgrade -y && pkg install -y git clang llvm python libzmq && pkg install binutils -y && pkg install -y binutils-is-llvm && pkg install -y rust cmake libcrypt make rust libandroid-execinfo
-```
-
-# editors
-ndk-multilib (compiling stuff)
-chafa (yazi image previews)
-poppler (yazi pdf previews)
-```
-pkg install imagemagick -y
+pkg update -y && pkg upgrade -y
+kg install -y git clang llvm python libzmq openssh samba
 pkg install build-essential -y
-pkg install binutils -y 
+pkg install binutils -y
+pkg install -y binutils-is-llvm
 pkg install ndk-multilib -y
+pkg install libandroid-execinfo -y
 pkg install ninja -y
-
+pkg install -y cmake libcrypt make
 pkg install dnsutils jq -y
+pkg install imagemagick -y
 
 pkg install rust -y
 pkg install python -y
@@ -60,13 +66,10 @@ pkg install uv -y
 pkg install nodejs -y
 
 pkg install micro -y
-apt install lazygit -y
 pkg install helix-editor -y
 pkg install helix-grammars -y
+apt install lazygit -y
 pkg install ffmpeg -y
-pkg install git -y
-pkg install openssh -y
-pkg install samba -y
 pkg install exiftool -y
 pkg install chafa -y
 pkg install yazi -y
@@ -84,27 +87,25 @@ pkg install htop -y
 ---
 # Python datascience environment
 
-need maturin for a bunch of libs:
-https://old.reddit.com/r/termux/comments/19c8rpg/how_to_install_maturin_and_wheel/
+[need maturin for a bunch of libs](https://old.reddit.com/r/termux/comments/19c8rpg/how_to_install_maturin_and_wheel)
 ```
-pkg install -y rust binutils
 CARGO_BUILD_TARGET="$(rustc -Vv | grep "host" | awk '{print $2}')"
 pip install maturin
 ```
 
+DS libraries are compiled for termux:
 ```
-pkg install -y python-pyarrow python-numpy python-pandas
+pkg install -y python-pyarrow python-numpy python-pandas matplotlib
 ```
 
-this one for euporie in termux:
-https://old.reddit.com/r/termux/comments/149b9xx/jupyter_notebook_in_termux/
-apt install libzmq
+[this one for euporie in termux](https://old.reddit.com/r/termux/comments/149b9xx/jupyter_notebook_in_termux)
+```
+pkg install -y libzmq
 LDFLAGS=" -lm -lcompiler_rt" pip3 install jupyter
+```
 
-to install jupyter:
-https://old.reddit.com/r/termux/comments/15e6qz5/how_to_install_jupyter_notebook_in_termux/
-
-
+[to install jupyter](https://old.reddit.com/r/termux/comments/15e6qz5/how_to_install_jupyter_notebook_in_termux)
+```
 _file="$(find $PREFIX/lib/python3.11 -name "_sysconfigdata*.py")"
 rm -rf $PREFIX/lib/python3.11/__pycache__
 cp "$_file" "$_file".backup
@@ -113,21 +114,18 @@ sed -i 's|-fno-openmp-implicit-rpath||g' "$_file"
 pip install jupyter
 pkg install -y patchelf
 patchelf --add-needed libpython3.11.so /data/data/com.termux/files/usr/lib/python3.11/site-packages/zmq/backend/cython/_zmq.cpython-311.so
-pkg install -y matplotlib
+```
+
 
 # try this one:
 
-https://github.com/cheadrian/termux-chroot-proot-wine-box86_64
-
-Setup Guide Here: https://medium.com/samsung-internet-dev/writing-software-using-a-phone-e71976f1f18d
 ----
 [First, setup storage access:](https://wiki.termux.com/wiki/Termux-setup-storage)
-
-`termux-setup-storage`
- touch .hushlogin
-
+```
+termux-setup-storage
+touch .hushlogin
 termux-change-repo
-
+```
 
 
 
