@@ -47,7 +47,7 @@ Now, exit and restart termux.
 # Basic Dev environment
 ```
 pkg update -y && pkg upgrade -y
-kg install -y git clang llvm python libzmq openssh samba
+kg install -y git clang llvm python libzmq openssh samba ffmpeg
 pkg install build-essential -y
 pkg install binutils -y
 pkg install -y binutils-is-llvm
@@ -66,11 +66,10 @@ pkg install nodejs -y
 pkg install micro -y
 pkg install helix-editor -y
 pkg install helix-grammars -y
+
 apt install lazygit -y
-pkg install ffmpeg -y
 pkg install exiftool -y
 pkg install chafa -y
-pkg install yazi -y
 pkg install fzf -y
 pkg install fd  -y
 pkg install glow -y
@@ -80,6 +79,9 @@ pkg install zoxide -y
 pkg install eza -y
 pkg install poppler -y
 pkg install htop -y
+
+pkg install yazi -y
+pkg install zellij -y
 ```
 
 ---
@@ -134,7 +136,6 @@ pip install tldr
 # Rust Packages
 ### zellij
 ```
-cargo install --locked zellij
 cargo install serpl
 ```
 ### Adding LSP to helix
