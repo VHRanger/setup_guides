@@ -5,9 +5,7 @@
 
 
 ## TODO:
-add euporie notebooks install
 add euporie as default opener in yazi
-remove the python aliases after mamba install in debian!
 
 ---
 # Termux Setup
@@ -120,7 +118,39 @@ LDFLAGS=" -lm -lcompiler_rt" pip3 install jupyter
 pip install --user euporie
 ```
 
-# Advanced Configurations
+# Other Packages
+
+### Python based packages
+Python LSP for Helix
+NBTerm sucks but no other alt
+yt-dlp to download youtube vids
+glances is htop improvement
+tldr is for quick command lookups
+```
+pip install yt-dlp
+pip install python-lsp-server[all]
+pip install tldr
+```
+# Rust Packages
+### zellij
+```
+cargo install --locked zellij
+cargo install serpl
+```
+# NPM Packages
+```
+npm install --global vscode-html-languageserver-bin
+```
+### Adding LSP to helix
+
+they're all here: https://github.com/helix-editor/helix/wiki/Language-Server-Configurations 
+
+markdown:
+https://github.com/artempyanykh/marksman/blob/main/docs/install.md
+download binary and move to /usr/bin
+
+
+# More Configurations
 
 ### SSH Note:
 The config file might be in `~/.ssh/.config` or in `/usr/etc/ssh/ssh_config`. Make sure with `ssh -vvv ADDR_TO_CONNECT` that you're using the right one
@@ -191,43 +221,6 @@ image_bound      = [ 0, 0 ]
 suppress_preload = false
 ```
 
-# Python Stuff
-Impossible to install micromamba on termux??? It's missing links to libpthread, etc.
-Might be possible to patch elf file to get it running. [see here](https://pyarmor.readthedocs.io/en/latest/tutorial/installation.html#termux-issues)
-
-Meantime you can install numpy and pandas this way:
-https://github.com/termux/termux-packages/discussions/19126
-
-### Python based packages
-Python LSP for Helix
-NBTerm sucks but no other alt
-yt-dlp to download youtube vids
-glances is htop improvement
-tldr is for quick command lookups
-```
-pip install nbterm
-pip install yt-dlp
-pip install --user glances
-pip install python-lsp-server[all]
-pip install tldr
-```
-# Rust Packages
-### zellij
-```
-cargo install --locked zellij
-cargo install serpl
-```
-# NPM Packages
-```
-npm install --global vscode-html-languageserver-bin
-```
-### Adding LSP to helix
-
-they're all here: https://github.com/helix-editor/helix/wiki/Language-Server-Configurations 
-
-markdown:
-https://github.com/artempyanykh/marksman/blob/main/docs/install.md
-download binary and move to /usr/bin
 
 ### Helix Config
 ```
