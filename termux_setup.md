@@ -27,25 +27,11 @@ LDFLAGS=" -lm -lcompiler_rt" pip3 install jupyter
 to install jupyter:
 https://old.reddit.com/r/termux/comments/15e6qz5/how_to_install_jupyter_notebook_in_termux/
 
-pkg install python libzmq libcrypt
-pkg install rust libzmq
-pkg install python make rust llvm binutils-is-llvm libandroid-execinfo -y
+------------
 
-# THIS ONE WORKS FOR JUPYTER NOTEBOOKS:
-## NOTE they still dont work in proot though
-
-
-pkg update -y
-pkg upgrade -y
-
-apt install -y git clang
-apt install -y python
-apt install -y libzmq
-apt install -y rust
-pkg install -y binutils
-pip install maturin
-apt install -y cmake
-pip install pyzmq
+```
+pkg update -y && pkg upgrade -y && pkg install -y git clang python libzmq rust binutils maturin cmake pyzmq libcrypt make rust llvm binutils-is-llvm libandroid-execinfo
+```
 
 _file="$(find $PREFIX/lib/python3.11 -name "_sysconfigdata*.py")"
 rm -rf $PREFIX/lib/python3.11/__pycache__
