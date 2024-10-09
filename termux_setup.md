@@ -107,9 +107,9 @@ yes | pkg upgrade
 pkg install python build-essential cmake ninja libopenblas libandroid-execinfo patchelf binutils-is-llvm
 pip3 install setuptools wheel packaging pyproject_metadata cython meson-python versioneer
 
-MATHLIB=m LDFLAGS="-lpython3.11" pip3 install --no-build-isolation --no-cache-dir numpy
+MATHLIB=m LDFLAGS="-lpython3.12" pip3 install --no-build-isolation --no-cache-dir numpy
 
-LDFLAGS="-lpython3.11" pip3 install --no-build-isolation --no-cache-dir pandas
+LDFLAGS="-lpython3.12" pip3 install --no-build-isolation --no-cache-dir pandas
 ```
 
 
@@ -121,14 +121,14 @@ LDFLAGS=" -lm -lcompiler_rt" pip3 install jupyter
 
 [to install jupyter](https://old.reddit.com/r/termux/comments/15e6qz5/how_to_install_jupyter_notebook_in_termux)
 ```
-_file="$(find $PREFIX/lib/python3.11 -name "_sysconfigdata*.py")"
-rm -rf $PREFIX/lib/python3.11/__pycache__
+_file="$(find $PREFIX/lib/python3.12 -name "_sysconfigdata*.py")"
+rm -rf $PREFIX/lib/python3.12/__pycache__
 cp "$_file" "$_file".backup
 sed -i 's|-fno-openmp-implicit-rpath||g' "$_file"
 
 pip install jupyter
 pkg install -y patchelf
-patchelf --add-needed libpython3.11.so /data/data/com.termux/files/usr/lib/python3.11/site-packages/zmq/backend/cython/_zmq.cpython-311.so
+patchelf --add-needed libpython3.12.so /data/data/com.termux/files/usr/lib/python3.12/site-packages/zmq/backend/cython/_zmq.cpython-311.so
 ```
 
 # Advanced Configurations
