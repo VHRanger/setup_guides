@@ -20,7 +20,6 @@ Can be installed with the termux styling side app. P10k will also install them.
 
 # Zsh, OMZSH, P10K, etc.
 ```
-# Core tools
 pkg install zsh -y
 chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -30,7 +29,12 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 ```
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 ```
-
+Then set in `~/.zshrc`:
+```
+ZSH_THEME="powerlevel10k/powerlevel10k"
+```
+also while youre in there make sure to uncomment the omzsh line to add `$HOME.local/bin/` to the path.
+Now, exit and restart termux.
 ------------
 # Basic Dev environment
 ```
@@ -88,12 +92,7 @@ termux-change-repo
 
 
 
-Then set in `~/.zshrc`:
-```
-ZSH_THEME="powerlevel10k/powerlevel10k"
-```
 
-also while youre in there make sure to uncomment the omzsh line to add `$HOME.local/bin/` to the path
 
 # editors
 ndk-multilib (compiling stuff)
